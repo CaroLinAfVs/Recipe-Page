@@ -1,13 +1,23 @@
+import Divider from './components/Divider';
+import Image from './components/Image';
+import InfoBox from './components/InfoBox';
+import Instructions from './components/Instructions';
+import Table from './components/Table';
+import Title from './components/Title';
+
 function App() {
+  const nutritionalData = [
+    { label: 'Calories', value: '277kcal' },
+    { label: 'Carbs', value: '0g' },
+    { label: 'Proteins', value: '20g' },
+    { label: 'Fat', value: '22g' },
+  ];
+
   return (
     <div className="bg-orange-50 flex justify-center ">
       <div className="bg-white w-full	md:max-w-3xl md:my-14 rounded-2xl">
         <div className="md:p-8">
-          <img
-            className="md:rounded-2xl overflow-hidden"
-            src="https://assets.unileversolutions.com/recipes-v2/231048.jpg"
-            alt="omelette"
-          />
+          <Image src="https://assets.unileversolutions.com/recipes-v2/231048.jpg" />
         </div>
 
         <div className="p-8">
@@ -19,27 +29,15 @@ function App() {
             your choice of cheese, vegetable,or meats.
           </span>
 
-          <div className="my-4 text-sm bg-pink-100 rounded-md p-3">
-            <span className="font-bold text-base pb-4 text-fuchsia-800	">
-              Preparation Time
-            </span>
-            <ul className="list-disc	mt-2 list-inside text-sm marker:text-orange-800">
-              <li className="mb-2">
-                <span className="font-bold">Total</span>: Aproximately 10
-                minutes
-              </li>
-              <li className="mb-2">
-                <span className="font-bold">Preparation</span>: 5 minutes
-              </li>
-              <li className="mb-2">
-                <span className="font-bold">Cooking</span>: 5 minutes
-              </li>
-            </ul>
-          </div>
+          <InfoBox
+            title="Preparation time"
+            totalTime={10}
+            preparationTime={5}
+            cookingTime={5}
+          />
 
-          <h2 className="text-2xl text-orange-800 mb-3 font-serif">
-            Ingredients
-          </h2>
+          <Title>Ingredients</Title>
+
           <ul className="list-disc	mb-3 list-inside text-sm marker:text-orange-800">
             <li className="mb-2">2-3 large eggs</li>
             <li className="mb-2">Salt,to taste</li>
@@ -50,75 +48,59 @@ function App() {
             </li>
           </ul>
 
-          <div className="border-t-[1px] my-2" />
+          <Divider/>
 
-          <h2 className="text-2xl text-orange-800 mb-3 font-serif ">
-            Instructions
-          </h2>
+          <Title>Instructions</Title>
           <ul className="list-decimal	list-inside marker:text-orange-800 text-sm">
-            <li className="mb-2">
-              <span className="font-bold">Beat the eggs</span>:In a bowl, beat
+            <Instructions
+              title="Beat the eggs"
+              description="In a bowl, beat
               the eggs with a pinch of salt and pepper until they are well
               mixed. You can add a tablespoon of water or milk for a fluffier
-              texture
-            </li>
-            <li className="mb-2">
-              <span className="font-bold">Heat the pan</span>:Place a non-stick
-              frying pan over medium heat and butter or oil
-            </li>
-            <li className="mb-2">
-              <span className="font-bold">Cook the omelette</span>:Once the
+              texture"
+            />
+            <Instructions
+              title="Heat the pan"
+              description="Place a non-stick
+              frying pan over medium heat and butter or oil"
+            />
+            <Instructions
+              title="Cook the omelette"
+              description="Once the
               butter is melted and bubbling, pour in the eggs. Tilt the pan to
-              ensure the eggs evenly coat the surface
-            </li>
-            <li className="mb-2">
-              <span className="font-bold">Add fillings (optional)</span>:When
+              ensure the eggs evenly coat the surface"
+            />
+            <Instructions
+              title="Add fillings (optional)"
+              description="When
               the eggs begin to set at the edges but are still slightly runny in
               the middle, sprinkle your chosen fillings over one half of the
-              omelette
-            </li>
-            <li className="mb-2">
-              <span className="font-bold">Fold and serve</span>:As the omelette
+              omelette"
+            />
+            <Instructions
+              title="Fold and serve"
+              description="As the omelette
               continues to cook, carefully lift one edge and fold it over the
               fillings. Let it cook for another minute, then slide it onto a
-              plate
-            </li>
-            <li className="mb-2">
-              <span className="font-bold">Enjoy</span>:Serve hot,with additional
-              salt and pepper if needed.
-            </li>
+              plate"
+            />
+            <Instructions
+              title="Enjoy"
+              description="Serve hot,with additional
+              salt and pepper if needed."
+            />
           </ul>
 
-          <div className="border-t-[1px] my-2" />
+          <Divider/>
 
-          <h2 className="text-2xl text-orange-800 mb-3 font-serif">
-            Nutrition
-          </h2>
+          <Title>Nutrition</Title>
           <span className="text-sm">
             The table below shows nutritional values per serving without the
             additional fillings.
           </span>
+
           <div className="my-3">
-            <ul className="grid divide-y">
-              <li className="py-2 flex justify-between px-8 ">
-                <span className="text-sm ">Calories</span>
-                <span className=" text-sm text-orange-800 font-bold ">
-                  277kcal
-                </span>
-              </li>
-              <li className="py-2 flex justify-between px-8 ">
-                <span className="text-sm">Carbs</span>
-                <span className=" text-sm text-orange-800 font-bold ">0g</span>
-              </li>
-              <li className="py-2 flex justify-between px-8 ">
-                <span className="text-sm">Protein</span>
-                <span className=" text-sm text-orange-800 font-bold ">20g</span>
-              </li>
-              <li className="py-2 flex justify-between px-8 ">
-                <span className="text-sm">Fat</span>
-                <span className=" text-sm text-orange-800 font-bold ">22g</span>
-              </li>
-            </ul>
+           <Table data={nutritionalData}/>
           </div>
         </div>
       </div>
